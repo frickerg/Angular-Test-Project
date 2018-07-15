@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -13,6 +14,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 	],
 	imports: [
 		BrowserModule,
+		FormsModule,
 		BrowserAnimationsModule,
 		MatToolbarModule
 	],
