@@ -8,6 +8,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { FormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 		BrowserModule,
 		FormsModule,
 		BrowserAnimationsModule,
-		MatToolbarModule
+		MatToolbarModule,
+		AppRoutingModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
