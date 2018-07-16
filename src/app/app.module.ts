@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { FormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeroesComponent,
-		HeroDetailComponent
+		HeroDetailComponent,
+		MessagesComponent
 	],
 	imports: [
 		BrowserModule,
@@ -21,6 +23,6 @@ import { HeroDetailComponent } from './components/hero-detail/hero-detail.compon
 		MatToolbarModule
 	],
 	providers: [],
-	bootstrap: [ AppComponent ]
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
