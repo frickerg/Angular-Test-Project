@@ -1,13 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-toolbar>
-	<mat-toolbar-row>
-		<span>First Row</span>
-	</mat-toolbar-row>
-
-	<mat-toolbar-row>
-		<span>Second Row</span>
-	</mat-toolbar-row>
-</mat-toolbar>
 <h1>{{title}}</h1>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+	<button mat-menu-item>
+		<a routerLink="/">Home</a>
+	</button>
+	<button mat-menu-item>
+		<a routerLink="/heroes">Heroes</a>
+	</button>
+</mat-menu>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

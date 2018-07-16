@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
@@ -21,7 +21,8 @@ import { AppRoutingModule } from './modules/app-routing.module';
 		BrowserModule,
 		FormsModule,
 		BrowserAnimationsModule,
-		MatToolbarModule,
+		MatMenuModule,
+		MatButtonModule,
 		AppRoutingModule
 	],
 	providers: [],

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { Hero } from '../../components/hero';
 import { HEROES } from '../../components/mock-heroes';
-import { MessageService } from '../../services/message/message.service';
+import { MessageService } from '../message/message.service';
 
 @Injectable({
 	providedIn: 'root',
