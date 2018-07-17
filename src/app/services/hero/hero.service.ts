@@ -8,11 +8,16 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from '../../components/hero';
 import { MessageService } from '../message/message.service';
 
+const httpOptions = {
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
 	providedIn: 'root',
 })
 export class HeroService {
-	private heroesUrl = 'api/heroes';  // URL to web api
+	// run json server : https://github.com/typicode/json-server
+	private heroesUrl = 'http://localhost:3000/heroes';
 
 	constructor(
 		private http: HttpClient,
@@ -35,16 +40,27 @@ export class HeroService {
 		);
 	}
 
+	addHero(hero: Hero): Observable<Hero> {
+		return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+			tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+			catchError(this.handleError<Hero>('addHero'))
+		);
+	}
+
+	updateHero(hero: Hero): Observable<any> {
+		return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+			tap(_ => this.log(`updated hero id=${hero.id}`)),
+			catchError(this.handleError<any>('updateHero'))
+		);
+	}
+
 	private log(message: string) {
 		this.messageService.add(`HeroService: ${message}`);
 	}
 
 	private handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
-			// TODO: send the error to remote logging infrastructure
-			console.error(error); // log to console instead
-
-			// TODO: better job of transforming error for user consumption
+			console.error(error);
 			this.log(`${operation} failed: ${error.message}`);
 
 			// Let the app keep running by returning an empty result.

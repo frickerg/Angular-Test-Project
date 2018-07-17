@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule, MatButtonModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
@@ -10,8 +11,6 @@ import { HeroDetailComponent } from './components/hero-detail/hero-detail.compon
 import { MessagesComponent } from './components/messages/messages.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './modules/app-routing.module';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
 	declarations: [
@@ -27,7 +26,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 		BrowserAnimationsModule,
 		MatMenuModule,
 		MatButtonModule,
-		AppRoutingModule
+		AppRoutingModule,
+		HttpClientModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
