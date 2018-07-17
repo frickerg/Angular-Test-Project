@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule, MatButtonModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
@@ -11,6 +12,7 @@ import { HeroDetailComponent } from './components/hero-detail/hero-detail.compon
 import { MessagesComponent } from './components/messages/messages.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './modules/app-routing.module';
+import { ApiService } from './services/api/api.service';
 
 @NgModule({
 	declarations: [
@@ -27,9 +29,10 @@ import { AppRoutingModule } from './modules/app-routing.module';
 		MatMenuModule,
 		MatButtonModule,
 		AppRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		HttpModule
 	],
-	providers: [],
+	providers: [ApiService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

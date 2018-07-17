@@ -13,7 +13,7 @@ export class ApiService {
 
 	constructor(private http: Http) { }
 
-	public getAllHeros(): Observable<Hero[]> {
+	public getAllHeroes(): Observable<Hero[]> {
 		return this.http
 			.get(API_URL + '/heroes')
 			.pipe(map(response => {

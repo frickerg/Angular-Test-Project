@@ -3,7 +3,7 @@ import { Hero } from '../hero';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { HeroService } from '../../services/hero/hero.service';
+import { ApiService } from '../../services/api/api.service';
 
 @Component({
 	selector: 'app-hero-detail',
@@ -15,7 +15,7 @@ export class HeroDetailComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		private heroService: HeroService,
+		private api: ApiService,
 		private location: Location
 	) { }
 
@@ -25,7 +25,7 @@ export class HeroDetailComponent implements OnInit {
 
 	getHero(): void {
 		const id = +this.route.snapshot.paramMap.get('id');
-		this.heroService.getHero(id)
+		this.api.getHeroById(id)
 			.subscribe(hero => this.hero = hero);
 	}
 

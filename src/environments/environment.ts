@@ -4,5 +4,5 @@ export const environment = {
 	production: false,
 
 	// URL of development API
-	apiUrl: 'http://localhost:3000/heroes'
+	apiUrl: 'http://localhost:3000'
 };
