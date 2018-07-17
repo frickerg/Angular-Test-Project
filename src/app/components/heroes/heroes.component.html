@@ -10,12 +10,8 @@
 	<label>Hero name:
 		<input #heroName />
 	</label>
-	<!-- (click) passes input value to add() and then clears the input -->
-
-	<!--
-	// TODO:
-	<button (click)="add(heroName.value); heroName.value=''">
+	<!-- (click) passes input value to addHero() and then clears the input -->
+	<button (click)="addHero(heroName.value); heroName.value=''">
 		add
 	</button>
-	-->
 </div>

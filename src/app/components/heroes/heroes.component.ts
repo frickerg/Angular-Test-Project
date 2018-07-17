@@ -21,4 +21,11 @@ export class HeroesComponent implements OnInit {
 		this.api.getAllHeroes()
 			.subscribe(heroes => this.heroes = heroes);
 	}
+
+	addHero(heroValue: string) {
+		const nextIndex = this.heroes[this.heroes.length - 1].id + 1;
+		this.api.createHero(new Hero({ id: nextIndex, name: heroValue }))
+			.subscribe(hero => this.heroes.push(hero));
+	}
+
 }
