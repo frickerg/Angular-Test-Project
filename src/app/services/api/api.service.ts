@@ -45,6 +45,7 @@ export class ApiService {
 	}
 
 	public updateHero(hero: Hero): Observable<Hero> {
+		console.log('in update : ' + hero.name);
 		return this.http
 			.put(API_URL + '/heroes/' + hero.id, hero)
 			.pipe(map(response => {
@@ -57,7 +58,9 @@ export class ApiService {
 	public deleteHeroById(heroId: number): Observable<null> {
 		return this.http
 			.delete(API_URL + '/heroes/' + heroId)
-			.pipe(map(response => null), catchError(err => {
+			.pipe(map(response => {
+				return null;
+			}), catchError(err => {
 				return this.handleError(err);
 			}));
 	}

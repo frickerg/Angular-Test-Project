@@ -29,7 +29,15 @@ export class HeroDetailComponent implements OnInit {
 			.subscribe(hero => this.hero = hero);
 	}
 
-	goBack(): void {
+	updateHero(): void {
+		this.api.updateHero(this.hero)
+			.subscribe(hero => this.hero = hero);
+		this.location.back();
+	}
+
+	deleteHero(): void {
+		this.api.deleteHeroById(this.hero.id)
+			.subscribe(hero => this.hero = hero);
 		this.location.back();
 	}
 
