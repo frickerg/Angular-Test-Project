@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -8,6 +9,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from '../../components/hero';
 import { MessageService } from '../message/message.service';
 
+// run json server : https://github.com/typicode/json-server
+const API_URL = environment.apiUrl;
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,16 +19,13 @@ const httpOptions = {
 	providedIn: 'root',
 })
 export class HeroService {
-	// run json server : https://github.com/typicode/json-server
-	private heroesUrl = 'http://localhost:3000/heroes';
-
 	constructor(
 		private http: HttpClient,
 		private messageService: MessageService
 	) { }
 
 	getHeroes(): Observable<Hero[]> {
-		return this.http.get<Hero[]>(this.heroesUrl)
+		return this.http.get<Hero[]>(API_URL)
 			.pipe(
 				tap(heroes => this.log('fetched heroes')),
 				catchError(this.handleError('getHeroes', []))
@@ -33,7 +33,7 @@ export class HeroService {
 	}
 
 	getHero(id: number): Observable<Hero> {
-		const url = `${this.heroesUrl}/${id}`;
+		const url = `${API_URL}/${id}`;
 		return this.http.get<Hero>(url).pipe(
 			tap(_ => this.log(`fetched hero id=${id}`)),
 			catchError(this.handleError<Hero>(`getHero id=${id}`))
@@ -41,14 +41,14 @@ export class HeroService {
 	}
 
 	addHero(hero: Hero): Observable<Hero> {
-		return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+		return this.http.post<Hero>(API_URL, hero, httpOptions).pipe(
 			tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
 			catchError(this.handleError<Hero>('addHero'))
 		);
 	}
 
 	updateHero(hero: Hero): Observable<any> {
-		return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+		return this.http.put(API_URL, hero, httpOptions).pipe(
 			tap(_ => this.log(`updated hero id=${hero.id}`)),
 			catchError(this.handleError<any>('updateHero'))
 		);
